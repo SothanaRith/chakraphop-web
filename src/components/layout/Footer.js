@@ -24,7 +24,7 @@ export default function Footer() {
     {
       title: 'Company',
       links: [
-        { label: 'About TechForge', href: '/about' },
+        { label: 'About Chakraphop', href: '/about' },
         { label: 'Careers', href: '/careers' },
         { label: 'Press', href: '/press' },
         { label: 'Developer Blog', href: '/blog' },
@@ -103,8 +103,8 @@ export default function Footer() {
             <p className="text-body-sm text-neutral-500">
               Questions?
               <br />
-              <a href="mailto:support@techforge.dev" className="text-neutral-300 hover:text-white transition-colors">
-                support@techforge.dev
+              <a href="mailto:support@chakraphop.dev" className="text-neutral-300 hover:text-white transition-colors">
+                support@chakraphop.dev
               </a>
             </p>
           </div>
@@ -113,7 +113,7 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-neutral-800 flex flex-col md:flex-row justify-between items-center gap-6">
           <p className="text-body-sm text-neutral-500">
-            © 2026 TechForge. All rights reserved.
+            © 2026 Chakraphop. All rights reserved.
           </p>
           <div className="flex gap-8">
             <Link href="/privacy" className="text-body-sm text-neutral-500 hover:text-white transition-colors">

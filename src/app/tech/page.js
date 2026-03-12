@@ -36,9 +36,8 @@ import Reveal from '@/components/animation/Reveal'
 import LazyFadeImage from '@/components/animation/LazyFadeImage'
 
 export const metadata = {
-  title: 'TechForge | Desktop Accessories + Programming Academy',
-  description:
-    'Build skills, upgrade your setup, and create the future with practical programming education, developer tools, and desktop accessories.',
+  title: 'Chakraphop | Desktop Accessories + Programming Academy',
+  description: 'Premium desk setups, programming courses, and developer tools merged into one ecosystem.',
 }
 
 const offerings = [
@@ -82,11 +81,12 @@ const featuredCourses = [
   },
   {
     title: 'React Frontend Patterns for Commerce Apps',
-    instructor: 'TechForge Academy',
+    instructor: 'Chakraphop Academy',
     rating: 4.8,
-    price: 59,
+    price: 199,
+    students: 1240,
     lessons: 18,
-    level: 'Beginner',
+    level: 'Advanced',
     href: '/tech/courses/react-frontend-patterns-for-commerce-apps',
     bg: 'from-indigo-500 to-violet-600',
     image: 'https://images.unsplash.com/photo-1545239351-1141bd82e8a6?auto=format&fit=crop&w=1200&q=70',
@@ -195,9 +195,12 @@ const testimonials = [
   },
   {
     name: 'Malis T.',
-    role: 'Freelance Developer',
-    quote:
-      'TechForge combines learning and gear in one ecosystem. It feels built for developers, not generic e-commerce.',
+    role: 'Freelance',
+    stars: 5,
+    content:
+      'Chakraphop combines learning and gear in one ecosystem. It feels built for developers, not generic e-commerce.',
+    author: 'Sarah Jenkins',
+    title: 'Senior Frontend Engineer',
   },
 ]
 
@@ -257,8 +260,8 @@ export default function TechLandingPage() {
                 </h1>
               </Reveal>
               <Reveal delay={130}>
-                <p className="mt-6 max-w-2xl text-lg text-slate-700">
-                  TechForge combines programming education, developer tools, and premium desktop accessories so builders can learn faster, work better, and ship confidently.
+                <p className="mt-4 max-w-2xl text-lg text-slate-700">
+                  Chakraphop combines programming education, developer tools, and premium desktop accessories so builders can learn faster, work better, and ship confidently.
                 </p>
               </Reveal>
               <div className="mt-10 flex flex-wrap gap-4">
@@ -309,222 +312,222 @@ export default function TechLandingPage() {
         </section>
 
         <Reveal>
-        <section className="container-section pb-20 lg:pb-24">
-          <div className="flex items-end justify-between gap-6 mb-8">
-            <div>
-              <p className="text-sm uppercase tracking-[0.15em] text-cyan-700">What we offer</p>
-              <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mt-2">One platform. Three growth engines.</h2>
+          <section className="container-section pb-20 lg:pb-24">
+            <div className="flex items-end justify-between gap-6 mb-8">
+              <div>
+                <p className="text-sm uppercase tracking-[0.15em] text-cyan-700">What we offer</p>
+                <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mt-2">One platform. Three growth engines.</h2>
+              </div>
             </div>
-          </div>
-          <div className="grid md:grid-cols-3 gap-6 stagger-children">
-            {offerings.map((item) => (
-              <article key={item.title} className="rounded-2xl border border-slate-200 bg-white p-7 shadow-sm hover-lift card-cinematic">
-                <item.icon className="w-7 h-7 text-cyan-700" />
-                <h3 className="text-xl font-semibold text-slate-900 mt-4">{item.title}</h3>
-                <p className="mt-3 text-slate-700 text-sm leading-6">{item.description}</p>
-                <Link href={item.href} className="inline-flex items-center gap-2 mt-6 text-cyan-700 font-semibold hover:text-cyan-900">
-                  {item.ctaLabel}
-                  <ArrowRight className="w-4 h-4" />
-                </Link>
-              </article>
-            ))}
-          </div>
-        </section>
-        </Reveal>
-
-        <Reveal>
-        <section className="container-section pb-20 lg:pb-24" id="featured-courses">
-          <div className="flex items-end justify-between gap-6 mb-8">
-            <div>
-              <p className="text-sm uppercase tracking-[0.15em] text-cyan-700">Featured courses</p>
-              <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mt-2">Popular programs for modern developers</h2>
-            </div>
-            <Link href="/tech/courses" className="link-accent font-semibold">View all courses</Link>
-          </div>
-          <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-6 stagger-children">
-            {featuredCourses.map((course) => (
-              <article key={course.title} className="rounded-2xl border border-slate-200 bg-white overflow-hidden shadow-sm card-cinematic course-card">
-                <div className="relative h-40 p-5 text-white flex items-end product-media">
-                  <LazyFadeImage src={course.image} alt={course.title} className="absolute inset-0" />
-                  <div className={`absolute inset-0 bg-gradient-to-br ${course.bg} opacity-70`} />
-                  <span className="relative z-10 text-xs uppercase tracking-[0.15em]">{course.level}</span>
-                </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-semibold text-slate-900 leading-snug">{course.title}</h3>
-                  <p className="mt-2 text-sm text-slate-600">Instructor: {course.instructor}</p>
-                  <div className="mt-4 flex items-center justify-between">
-                    <div className="flex items-center gap-1 text-amber-500">
-                      <Star className="w-4 h-4 fill-amber-500" />
-                      <span className="text-sm font-semibold text-slate-800">{course.rating}</span>
-                    </div>
-                    <p className="text-slate-900 font-bold">${course.price}</p>
-                  </div>
-                  <div className="mt-3 h-1.5 rounded-full bg-slate-100 overflow-hidden">
-                    <div className="progress-fill h-full rounded-full bg-gradient-to-r from-cyan-500 to-blue-600" style={{ width: `${Math.min(100, Math.round(course.rating * 20))}%` }} />
-                  </div>
-                  <div className="mt-5">
-                    <Link href={course.href} className="btn btn-primary rounded-xl w-full py-2.5">
-                      Enroll Now
-                    </Link>
-                  </div>
-                </div>
-              </article>
-            ))}
-          </div>
-        </section>
-        </Reveal>
-
-        <Reveal>
-        <section className="container-section pb-20 lg:pb-24" id="products">
-          <div className="flex items-end justify-between gap-6 mb-8">
-            <div>
-              <p className="text-sm uppercase tracking-[0.15em] text-cyan-700">Desk setup products</p>
-              <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mt-2">Top accessories for focus and flow</h2>
-            </div>
-            <Link href="/tech/store" className="link-accent font-semibold">View store</Link>
-          </div>
-          <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-6 stagger-children">
-            {deskProducts.map((product) => (
-              <article key={product.name} className="rounded-2xl border border-slate-200 bg-white overflow-hidden shadow-sm card-cinematic">
-                <div className="relative h-44 p-5 flex items-start justify-between product-media">
-                  <LazyFadeImage src={product.image} alt={product.name} className="absolute inset-0" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-black/10" />
-                  <span className={`relative z-10 text-xs font-semibold px-3 py-1 rounded-full ${product.accent}`}>{product.tag}</span>
-                  <Cpu className="relative z-10 w-6 h-6 text-white/90" />
-                </div>
-                <div className="p-6">
-                  <h3 className="text-lg font-semibold text-slate-900">{product.name}</h3>
-                  <p className="mt-3 text-xl font-bold text-slate-900">${product.price}</p>
-                  <Link href={product.href} className="mt-5 btn btn-secondary rounded-xl w-full py-2.5 border-slate-900 inline-flex items-center gap-2">
-                    <ShoppingCart className="w-4 h-4" />
-                    Add to Cart
+            <div className="grid md:grid-cols-3 gap-6 stagger-children">
+              {offerings.map((item) => (
+                <article key={item.title} className="rounded-2xl border border-slate-200 bg-white p-7 shadow-sm hover-lift card-cinematic">
+                  <item.icon className="w-7 h-7 text-cyan-700" />
+                  <h3 className="text-xl font-semibold text-slate-900 mt-4">{item.title}</h3>
+                  <p className="mt-3 text-slate-700 text-sm leading-6">{item.description}</p>
+                  <Link href={item.href} className="inline-flex items-center gap-2 mt-6 text-cyan-700 font-semibold hover:text-cyan-900">
+                    {item.ctaLabel}
+                    <ArrowRight className="w-4 h-4" />
                   </Link>
-                </div>
-              </article>
-            ))}
-          </div>
-        </section>
-        </Reveal>
-
-        <Reveal>
-        <section className="container-section pb-20 lg:pb-24">
-          <div className="rounded-3xl bg-gradient-to-br from-slate-950 via-slate-900 to-cyan-950 p-10 md:p-14 text-white">
-            <p className="text-sm uppercase tracking-[0.15em] text-cyan-300">Why choose us</p>
-            <h2 className="text-3xl md:text-4xl font-bold mt-3">Built for practical growth, not passive learning.</h2>
-            <div className="mt-8 grid md:grid-cols-2 gap-4">
-              {advantages.map((item) => (
-                <div key={item} className="flex items-start gap-3 rounded-xl border border-white/15 bg-white/5 p-4">
-                  <CheckCircle2 className="w-5 h-5 text-emerald-300 mt-0.5" />
-                  <p className="text-slate-100 text-sm">{item}</p>
-                </div>
+                </article>
               ))}
             </div>
-          </div>
-        </section>
+          </section>
         </Reveal>
 
         <Reveal>
-        <section className="container-section pb-20 lg:pb-24" id="learning-path">
-          <p className="text-sm uppercase tracking-[0.15em] text-cyan-700">Learning path</p>
-          <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mt-2">From beginner to professional in four steps</h2>
-          <div className="mt-9 grid md:grid-cols-2 xl:grid-cols-4 gap-5 stagger-children">
-            {learningPath.map((step, index) => (
-              <article key={step.title} className="rounded-2xl border border-slate-200 bg-white p-6 relative shadow-sm card-cinematic">
-                <span className="absolute -top-3 left-5 bg-cyan-700 text-white text-xs font-bold px-2.5 py-1 rounded-full">
-                  {index + 1}
-                </span>
-                <step.icon className="w-6 h-6 text-cyan-700 mt-3" />
-                <h3 className="text-lg font-semibold text-slate-900 mt-4">{step.title}</h3>
-                <p className="text-sm text-slate-700 mt-2 leading-6">{step.description}</p>
-              </article>
-            ))}
-          </div>
-        </section>
-        </Reveal>
-
-        <Reveal>
-        <section className="container-section pb-20 lg:pb-24" id="community">
-          <div className="rounded-3xl border border-slate-200 bg-white p-8 md:p-12 shadow-sm">
-            <div className="grid lg:grid-cols-2 gap-8 items-center">
+          <section className="container-section pb-20 lg:pb-24" id="featured-courses">
+            <div className="flex items-end justify-between gap-6 mb-8">
               <div>
-                <p className="text-sm uppercase tracking-[0.15em] text-cyan-700">Community</p>
-                <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mt-2">Learn with a developer community that builds together</h2>
-                <p className="text-slate-700 mt-4">
-                  Join discussion groups, collaborate on coding projects, and access curated tech learning resources from mentors and peers.
-                </p>
-                <div className="mt-7 flex flex-wrap gap-3">
-                  <a href="#" className="btn btn-primary rounded-xl px-6 py-3">Join Community</a>
-                  <Link href="/tech/courses" className="btn btn-secondary rounded-xl px-6 py-3 border-slate-900">Start Learning</Link>
-                </div>
+                <p className="text-sm uppercase tracking-[0.15em] text-cyan-700">Featured courses</p>
+                <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mt-2">Popular programs for modern developers</h2>
               </div>
-              <div className="grid sm:grid-cols-2 gap-4 stagger-children">
-                <div className="rounded-xl bg-cyan-50 p-5 card-cinematic">
-                  <Users className="w-6 h-6 text-cyan-700" />
-                  <p className="mt-3 font-semibold text-slate-900">Discussion Groups</p>
-                </div>
-                <div className="rounded-xl bg-indigo-50 p-5 card-cinematic">
-                  <Code2 className="w-6 h-6 text-indigo-700" />
-                  <p className="mt-3 font-semibold text-slate-900">Code Collaboration</p>
-                </div>
-                <div className="rounded-xl bg-emerald-50 p-5 card-cinematic">
-                  <Lightbulb className="w-6 h-6 text-emerald-700" />
-                  <p className="mt-3 font-semibold text-slate-900">Learning Resources</p>
-                </div>
-                <div className="rounded-xl bg-amber-50 p-5 card-cinematic">
-                  <Rocket className="w-6 h-6 text-amber-700" />
-                  <p className="mt-3 font-semibold text-slate-900">Career Momentum</p>
-                </div>
-              </div>
+              <Link href="/tech/courses" className="link-accent font-semibold">View all courses</Link>
             </div>
-          </div>
-        </section>
+            <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-6 stagger-children">
+              {featuredCourses.map((course) => (
+                <article key={course.title} className="rounded-2xl border border-slate-200 bg-white overflow-hidden shadow-sm card-cinematic course-card">
+                  <div className="relative h-40 p-5 text-white flex items-end product-media">
+                    <LazyFadeImage src={course.image} alt={course.title} className="absolute inset-0" />
+                    <div className={`absolute inset-0 bg-gradient-to-br ${course.bg} opacity-70`} />
+                    <span className="relative z-10 text-xs uppercase tracking-[0.15em]">{course.level}</span>
+                  </div>
+                  <div className="p-6">
+                    <h3 className="text-xl font-semibold text-slate-900 leading-snug">{course.title}</h3>
+                    <p className="mt-2 text-sm text-slate-600">Instructor: {course.instructor}</p>
+                    <div className="mt-4 flex items-center justify-between">
+                      <div className="flex items-center gap-1 text-amber-500">
+                        <Star className="w-4 h-4 fill-amber-500" />
+                        <span className="text-sm font-semibold text-slate-800">{course.rating}</span>
+                      </div>
+                      <p className="text-slate-900 font-bold">${course.price}</p>
+                    </div>
+                    <div className="mt-3 h-1.5 rounded-full bg-slate-100 overflow-hidden">
+                      <div className="progress-fill h-full rounded-full bg-gradient-to-r from-cyan-500 to-blue-600" style={{ width: `${Math.min(100, Math.round(course.rating * 20))}%` }} />
+                    </div>
+                    <div className="mt-5">
+                      <Link href={course.href} className="btn btn-primary rounded-xl w-full py-2.5">
+                        Enroll Now
+                      </Link>
+                    </div>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </section>
         </Reveal>
 
         <Reveal>
-        <section className="container-section pb-20 lg:pb-24" id="blog">
-          <div className="flex items-end justify-between gap-6 mb-8">
-            <div>
-              <p className="text-sm uppercase tracking-[0.15em] text-cyan-700">Content & tech blog</p>
-              <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mt-2">Tutorials, inspiration, and developer insights</h2>
+          <section className="container-section pb-20 lg:pb-24" id="products">
+            <div className="flex items-end justify-between gap-6 mb-8">
+              <div>
+                <p className="text-sm uppercase tracking-[0.15em] text-cyan-700">Desk setup products</p>
+                <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mt-2">Top accessories for focus and flow</h2>
+              </div>
+              <Link href="/tech/store" className="link-accent font-semibold">View store</Link>
             </div>
-            <Link href="/blog" className="link-accent font-semibold">Read all posts</Link>
-          </div>
-          <div className="grid md:grid-cols-3 gap-6 stagger-children">
-            {blogPosts.map((post) => (
-              <article key={post.title} className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm hover-lift card-cinematic">
-                <p className="text-xs font-semibold uppercase tracking-[0.1em] text-cyan-700">{post.category}</p>
-                <h3 className="text-xl font-semibold text-slate-900 mt-3">{post.title}</h3>
-                <a href={post.href} className="inline-flex items-center gap-2 mt-5 text-cyan-700 font-semibold hover:text-cyan-900">
-                  Explore article
-                  <ArrowRight className="w-4 h-4" />
-                </a>
-              </article>
-            ))}
-          </div>
-        </section>
+            <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-6 stagger-children">
+              {deskProducts.map((product) => (
+                <article key={product.name} className="rounded-2xl border border-slate-200 bg-white overflow-hidden shadow-sm card-cinematic">
+                  <div className="relative h-44 p-5 flex items-start justify-between product-media">
+                    <LazyFadeImage src={product.image} alt={product.name} className="absolute inset-0" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-black/10" />
+                    <span className={`relative z-10 text-xs font-semibold px-3 py-1 rounded-full ${product.accent}`}>{product.tag}</span>
+                    <Cpu className="relative z-10 w-6 h-6 text-white/90" />
+                  </div>
+                  <div className="p-6">
+                    <h3 className="text-lg font-semibold text-slate-900">{product.name}</h3>
+                    <p className="mt-3 text-xl font-bold text-slate-900">${product.price}</p>
+                    <Link href={product.href} className="mt-5 btn btn-secondary rounded-xl w-full py-2.5 border-slate-900 inline-flex items-center gap-2">
+                      <ShoppingCart className="w-4 h-4" />
+                      Add to Cart
+                    </Link>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </section>
         </Reveal>
 
         <Reveal>
-        <section className="container-section pb-20 lg:pb-24">
-          <p className="text-sm uppercase tracking-[0.15em] text-cyan-700">Testimonials</p>
-          <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mt-2">Trusted by students, customers, and developers</h2>
-          <div className="mt-8 grid md:grid-cols-3 gap-6 stagger-children">
-            {testimonials.map((item) => (
-              <article key={item.name} className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm card-cinematic">
-                <div className="flex items-center gap-3">
-                  <div className="w-11 h-11 rounded-full bg-slate-900 text-white flex items-center justify-center font-bold">
-                    {item.name.charAt(0)}
+          <section className="container-section pb-20 lg:pb-24">
+            <div className="rounded-3xl bg-gradient-to-br from-slate-950 via-slate-900 to-cyan-950 p-10 md:p-14 text-white">
+              <p className="text-sm uppercase tracking-[0.15em] text-cyan-300">Why choose us</p>
+              <h2 className="text-3xl md:text-4xl font-bold mt-3">Built for practical growth, not passive learning.</h2>
+              <div className="mt-8 grid md:grid-cols-2 gap-4">
+                {advantages.map((item) => (
+                  <div key={item} className="flex items-start gap-3 rounded-xl border border-white/15 bg-white/5 p-4">
+                    <CheckCircle2 className="w-5 h-5 text-emerald-300 mt-0.5" />
+                    <p className="text-slate-100 text-sm">{item}</p>
                   </div>
-                  <div>
-                    <p className="font-semibold text-slate-900">{item.name}</p>
-                    <p className="text-sm text-slate-600">{item.role}</p>
+                ))}
+              </div>
+            </div>
+          </section>
+        </Reveal>
+
+        <Reveal>
+          <section className="container-section pb-20 lg:pb-24" id="learning-path">
+            <p className="text-sm uppercase tracking-[0.15em] text-cyan-700">Learning path</p>
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mt-2">From beginner to professional in four steps</h2>
+            <div className="mt-9 grid md:grid-cols-2 xl:grid-cols-4 gap-5 stagger-children">
+              {learningPath.map((step, index) => (
+                <article key={step.title} className="rounded-2xl border border-slate-200 bg-white p-6 relative shadow-sm card-cinematic">
+                  <span className="absolute -top-3 left-5 bg-cyan-700 text-white text-xs font-bold px-2.5 py-1 rounded-full">
+                    {index + 1}
+                  </span>
+                  <step.icon className="w-6 h-6 text-cyan-700 mt-3" />
+                  <h3 className="text-lg font-semibold text-slate-900 mt-4">{step.title}</h3>
+                  <p className="text-sm text-slate-700 mt-2 leading-6">{step.description}</p>
+                </article>
+              ))}
+            </div>
+          </section>
+        </Reveal>
+
+        <Reveal>
+          <section className="container-section pb-20 lg:pb-24" id="community">
+            <div className="rounded-3xl border border-slate-200 bg-white p-8 md:p-12 shadow-sm">
+              <div className="grid lg:grid-cols-2 gap-8 items-center">
+                <div>
+                  <p className="text-sm uppercase tracking-[0.15em] text-cyan-700">Community</p>
+                  <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mt-2">Learn with a developer community that builds together</h2>
+                  <p className="text-slate-700 mt-4">
+                    Join discussion groups, collaborate on coding projects, and access curated tech learning resources from mentors and peers.
+                  </p>
+                  <div className="mt-7 flex flex-wrap gap-3">
+                    <a href="#" className="btn btn-primary rounded-xl px-6 py-3">Join Community</a>
+                    <Link href="/tech/courses" className="btn btn-secondary rounded-xl px-6 py-3 border-slate-900">Start Learning</Link>
                   </div>
                 </div>
-                <p className="mt-4 text-slate-700 leading-7">"{item.quote}"</p>
-              </article>
-            ))}
-          </div>
-        </section>
+                <div className="grid sm:grid-cols-2 gap-4 stagger-children">
+                  <div className="rounded-xl bg-cyan-50 p-5 card-cinematic">
+                    <Users className="w-6 h-6 text-cyan-700" />
+                    <p className="mt-3 font-semibold text-slate-900">Discussion Groups</p>
+                  </div>
+                  <div className="rounded-xl bg-indigo-50 p-5 card-cinematic">
+                    <Code2 className="w-6 h-6 text-indigo-700" />
+                    <p className="mt-3 font-semibold text-slate-900">Code Collaboration</p>
+                  </div>
+                  <div className="rounded-xl bg-emerald-50 p-5 card-cinematic">
+                    <Lightbulb className="w-6 h-6 text-emerald-700" />
+                    <p className="mt-3 font-semibold text-slate-900">Learning Resources</p>
+                  </div>
+                  <div className="rounded-xl bg-amber-50 p-5 card-cinematic">
+                    <Rocket className="w-6 h-6 text-amber-700" />
+                    <p className="mt-3 font-semibold text-slate-900">Career Momentum</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </Reveal>
+
+        <Reveal>
+          <section className="container-section pb-20 lg:pb-24" id="blog">
+            <div className="flex items-end justify-between gap-6 mb-8">
+              <div>
+                <p className="text-sm uppercase tracking-[0.15em] text-cyan-700">Content & tech blog</p>
+                <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mt-2">Tutorials, inspiration, and developer insights</h2>
+              </div>
+              <Link href="/blog" className="link-accent font-semibold">Read all posts</Link>
+            </div>
+            <div className="grid md:grid-cols-3 gap-6 stagger-children">
+              {blogPosts.map((post) => (
+                <article key={post.title} className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm hover-lift card-cinematic">
+                  <p className="text-xs font-semibold uppercase tracking-[0.1em] text-cyan-700">{post.category}</p>
+                  <h3 className="text-xl font-semibold text-slate-900 mt-3">{post.title}</h3>
+                  <a href={post.href} className="inline-flex items-center gap-2 mt-5 text-cyan-700 font-semibold hover:text-cyan-900">
+                    Explore article
+                    <ArrowRight className="w-4 h-4" />
+                  </a>
+                </article>
+              ))}
+            </div>
+          </section>
+        </Reveal>
+
+        <Reveal>
+          <section className="container-section pb-20 lg:pb-24">
+            <p className="text-sm uppercase tracking-[0.15em] text-cyan-700">Testimonials</p>
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mt-2">Trusted by students, customers, and developers</h2>
+            <div className="mt-8 grid md:grid-cols-3 gap-6 stagger-children">
+              {testimonials.map((item) => (
+                <article key={item.name} className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm card-cinematic">
+                  <div className="flex items-center gap-3">
+                    <div className="w-11 h-11 rounded-full bg-slate-900 text-white flex items-center justify-center font-bold">
+                      {item.name.charAt(0)}
+                    </div>
+                    <div>
+                      <p className="font-semibold text-slate-900">{item.name}</p>
+                      <p className="text-sm text-slate-600">{item.role}</p>
+                    </div>
+                  </div>
+                  <p className="mt-4 text-slate-700 leading-7">"{item.quote || item.content}"</p>
+                </article>
+              ))}
+            </div>
+          </section>
         </Reveal>
 
         <section className="container-section pb-16">
@@ -562,9 +565,9 @@ export default function TechLandingPage() {
         </section>
 
         <section className="container-section pb-24">
-          <div className="rounded-2xl border border-slate-200 bg-white p-8 md:p-10">
-            <h3 className="text-xl font-bold text-slate-900">TechForge Site Map</h3>
-            <div className="mt-6 grid sm:grid-cols-2 lg:grid-cols-4 gap-6 text-sm">
+          <div className="bg-slate-50 p-6 rounded-lg shadow-sm border border-slate-100">
+            <h3 className="text-xl font-bold text-slate-900">Chakraphop Site Map</h3>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-4">
               <div>
                 <p className="font-semibold text-slate-900 mb-3">About Us</p>
                 <Link href="/about" className="block text-slate-600 hover:text-slate-900">Our Story</Link>
@@ -585,9 +588,9 @@ export default function TechLandingPage() {
                 <p className="font-semibold text-slate-900 mb-3">Blog</p>
                 <a href="#blog" className="block text-slate-600 hover:text-slate-900">Tech Articles</a>
               </div>
-              <div>
-                <p className="font-semibold text-slate-900 mb-3">Contact</p>
-                <a href="mailto:support@techforge.dev" className="block text-slate-600 hover:text-slate-900">support@techforge.dev</a>
+              <div className="bg-slate-50 p-6 rounded-lg shadow-sm border border-slate-100">
+                <h4 className="text-slate-900 font-bold mb-2">Need Help?</h4>
+                <a href="mailto:support@chakraphop.dev" className="block text-slate-600 hover:text-slate-900">support@chakraphop.dev</a>
               </div>
               <div>
                 <p className="font-semibold text-slate-900 mb-3">Social</p>

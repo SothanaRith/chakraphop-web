@@ -5,9 +5,8 @@ import { CartProvider } from '@/contexts/CartContext'
 import PageTransition from '@/components/animation/PageTransition'
 
 export const metadata = {
-  title: 'TechForge - Accessories Store and Coding Academy',
-  description: 'Shop desktop setup accessories and learn programming through modern online courses.',
-  keywords: ['desktop accessories', 'programming courses', 'tech ecommerce', 'coding academy'],
+  title: 'Chakraphop - Accessories Store and Coding Academy',
+  description: 'Premium gear and intensive education for developers',
 }
 
 export default function RootLayout({ children }) {

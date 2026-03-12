@@ -35,6 +35,7 @@ export default function Navigation() {
     { href: '/tech/courses', label: 'Course Marketplace' },
     { href: '/tech/student/dashboard', label: 'Student Dashboard' },
     { href: '/tech/instructor/dashboard', label: 'Instructor Dashboard' },
+    { href: '/development', label: 'Development Services' },
   ]
 
   return (
@@ -47,7 +48,7 @@ export default function Navigation() {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="text-2xl font-display font-bold tracking-tight hover:opacity-70 transition-opacity">
-            TECHFORGE
+            CHAKRAPHOP
           </Link>
 
           {/* Desktop Navigation */}
