@@ -73,6 +73,7 @@ const featuredCourses = [
     instructor: 'Lin Nguyen',
     rating: 4.9,
     price: 79,
+    originalPrice: 149,
     lessons: 24,
     level: 'Intermediate',
     href: '/tech/courses/nodejs-api-engineering-bootcamp',
@@ -84,6 +85,7 @@ const featuredCourses = [
     instructor: 'Chakraphop Academy',
     rating: 4.8,
     price: 199,
+    originalPrice: 299,
     students: 1240,
     lessons: 18,
     level: 'Advanced',
@@ -96,6 +98,7 @@ const featuredCourses = [
     instructor: 'Senior Mentors',
     rating: 4.9,
     price: 99,
+    originalPrice: 199,
     lessons: 30,
     level: 'Advanced',
     href: '/tech/courses',
@@ -108,6 +111,7 @@ const deskProducts = [
   {
     name: 'Keychron K8 Pro Hot-Swap Keyboard',
     price: 109.99,
+    originalPrice: 149.99,
     tag: 'Best Seller',
     href: '/tech/store/keychron-k8-pro-hot-swap-keyboard',
     accent: 'bg-cyan-100 text-cyan-800',
@@ -116,6 +120,7 @@ const deskProducts = [
   {
     name: 'BenQ ScreenBar Halo Monitor Light',
     price: 159.0,
+    originalPrice: 199.0,
     tag: 'Focus Gear',
     href: '/tech/store/benq-screenbar-halo-monitor-light',
     accent: 'bg-amber-100 text-amber-800',
@@ -124,6 +129,7 @@ const deskProducts = [
   {
     name: 'Developer Desk Starter Set',
     price: 249.0,
+    originalPrice: 349.0,
     tag: 'Bundle',
     href: '/tech/store',
     accent: 'bg-emerald-100 text-emerald-800',
@@ -350,7 +356,14 @@ export default function TechLandingPage() {
                   <div className="relative h-40 p-5 text-white flex items-end product-media">
                     <LazyFadeImage src={course.image} alt={course.title} className="absolute inset-0" />
                     <div className={`absolute inset-0 bg-gradient-to-br ${course.bg} opacity-70`} />
-                    <span className="relative z-10 text-xs uppercase tracking-[0.15em]">{course.level}</span>
+                    <div className="relative z-10 flex justify-between w-full items-center">
+                      <span className="text-xs uppercase tracking-[0.15em]">{course.level}</span>
+                      {course.originalPrice && (
+                        <span className="bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-md">
+                          {Math.round((1 - course.price / course.originalPrice) * 100)}% OFF
+                        </span>
+                      )}
+                    </div>
                   </div>
                   <div className="p-6">
                     <h3 className="text-xl font-semibold text-slate-900 leading-snug">{course.title}</h3>
@@ -360,7 +373,12 @@ export default function TechLandingPage() {
                         <Star className="w-4 h-4 fill-amber-500" />
                         <span className="text-sm font-semibold text-slate-800">{course.rating}</span>
                       </div>
-                      <p className="text-slate-900 font-bold">${course.price}</p>
+                      <div className="text-right">
+                        {course.originalPrice && (
+                          <p className="text-xs text-slate-400 line-through">${course.originalPrice}</p>
+                        )}
+                        <p className="text-slate-900 font-bold">${course.price}</p>
+                      </div>
                     </div>
                     <div className="mt-3 h-1.5 rounded-full bg-slate-100 overflow-hidden">
                       <div className="progress-fill h-full rounded-full bg-gradient-to-r from-cyan-500 to-blue-600" style={{ width: `${Math.min(100, Math.round(course.rating * 20))}%` }} />
@@ -392,12 +410,24 @@ export default function TechLandingPage() {
                   <div className="relative h-44 p-5 flex items-start justify-between product-media">
                     <LazyFadeImage src={product.image} alt={product.name} className="absolute inset-0" />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-black/10" />
-                    <span className={`relative z-10 text-xs font-semibold px-3 py-1 rounded-full ${product.accent}`}>{product.tag}</span>
+                    <div className="relative z-10 flex flex-col gap-2">
+                      <span className={`text-xs font-semibold px-3 py-1 rounded-full w-fit ${product.accent}`}>{product.tag}</span>
+                      {product.originalPrice && (
+                        <span className="bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-md w-fit shadow-lg shadow-red-500/20">
+                          Save ${Math.floor(product.originalPrice - product.price)}
+                        </span>
+                      )}
+                    </div>
                     <Cpu className="relative z-10 w-6 h-6 text-white/90" />
                   </div>
                   <div className="p-6">
                     <h3 className="text-lg font-semibold text-slate-900">{product.name}</h3>
-                    <p className="mt-3 text-xl font-bold text-slate-900">${product.price}</p>
+                    <div className="mt-3 flex items-center gap-3">
+                      <p className="text-xl font-bold text-slate-900">${product.price}</p>
+                      {product.originalPrice && (
+                        <p className="text-sm text-slate-400 line-through">${product.originalPrice}</p>
+                      )}
+                    </div>
                     <Link href={product.href} className="mt-5 btn btn-secondary rounded-xl w-full py-2.5 border-slate-900 inline-flex items-center gap-2">
                       <ShoppingCart className="w-4 h-4" />
                       Add to Cart
