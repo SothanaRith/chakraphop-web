@@ -1,11 +1,22 @@
 'use client'
 
 import { useCallback, useEffect, useMemo, useState } from 'react'
-import { adminCoursesService } from '@/lib/api/admin'
+import { adminCoursesService, adminMediaService } from '@/lib/api/admin'
 import { ErrorAlert, SuccessAlert } from '@/components/admin/Alerts'
 import { DataTable } from '@/components/admin/DataTable'
 import { Modal } from '@/components/admin/Modal'
 import { RoleGuard } from '@/components/admin/RoleGuard'
+
+const toBase64 = (file) =>
+  new Promise((resolve, reject) => {
+    const reader = new FileReader()
+    reader.onload = () => {
+      const result = String(reader.result || '')
+      resolve(result.split(',')[1] || '')
+    }
+    reader.onerror = reject
+    reader.readAsDataURL(file)
+  })
 
 const initialCourseForm = {
   title: '',
@@ -34,6 +45,7 @@ const initialLessonForm = {
   durationMinutes: '0',
   isPreview: false,
   displayOrder: '0',
+  documents: [],
 }
 
 const unwrap = (payload) => payload?.data || payload || {}
@@ -234,6 +246,7 @@ export default function AdminCoursesPage() {
       durationMinutes: String(lesson.durationMinutes || 0),
       isPreview: Boolean(lesson.isPreview),
       displayOrder: String(lesson.displayOrder || 0),
+      documents: Array.isArray(lesson.documents) ? lesson.documents : [],
     })
     setShowLessonModal(true)
   }
@@ -266,6 +279,51 @@ export default function AdminCoursesPage() {
     } finally {
       setSubmitting(false)
     }
+  }
+
+  const handleUploadDocument = async (event) => {
+    const file = event.target.files?.[0]
+    if (!file) return
+
+    try {
+      setSubmitting(true)
+      setError('')
+      const base64Data = await toBase64(file)
+      
+      // Upload using media service
+      const response = await adminMediaService.uploadMedia({
+        originalFileName: file.name,
+        mimeType: file.type,
+        base64Data,
+        category: 'lesson',
+      })
+      
+      const newDoc = {
+        title: file.name,
+        url: response.url || response.media?.url || '',
+        size: file.size,
+        mimeType: file.type,
+      }
+      
+      setLessonForm((prev) => ({
+        ...prev,
+        documents: [...(prev.documents || []), newDoc],
+      }))
+      
+      setSuccess('Document uploaded and attached')
+    } catch (err) {
+      setError(err.message || 'Failed to upload document')
+    } finally {
+      setSubmitting(false)
+      event.target.value = ''
+    }
+  }
+
+  const handleRemoveDocument = (indexToRemove) => {
+    setLessonForm((prev) => ({
+      ...prev,
+      documents: (prev.documents || []).filter((_, index) => index !== indexToRemove)
+    }))
   }
 
   const columns = [
@@ -735,6 +793,38 @@ export default function AdminCoursesPage() {
               />
               Mark as preview lesson
             </label>
+          </div>
+
+          <div className="pt-4 border-t border-gray-100">
+            <div className="flex items-center justify-between mb-2">
+              <label className="block text-sm font-medium text-gray-700">Attached Documents</label>
+              <label className={`text-sm px-3 py-1 bg-gray-100 border border-gray-300 rounded cursor-pointer hover:bg-gray-200 transition ${submitting ? 'opacity-50 pointer-events-none' : ''}`}>
+                {submitting ? 'Uploading...' : '+ Upload Document'}
+                <input type="file" className="hidden" onChange={handleUploadDocument} disabled={submitting} />
+              </label>
+            </div>
+            
+            {(lessonForm.documents || []).length === 0 ? (
+              <p className="text-sm text-gray-500 italic pb-2">No documents attached.</p>
+            ) : (
+              <ul className="space-y-2 mb-4">
+                {lessonForm.documents.map((doc, idx) => (
+                  <li key={idx} className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 p-2 bg-gray-50 rounded border border-gray-200">
+                    <div className="overflow-hidden">
+                      <p className="text-sm font-medium text-gray-900 truncate">{doc.title}</p>
+                      <p className="text-xs text-gray-500">{doc.mimeType} • {Math.round((doc.size || 0)/1024)} KB</p>
+                    </div>
+                    <button 
+                      type="button" 
+                      onClick={() => handleRemoveDocument(idx)}
+                      className="text-xs text-red-600 hover:text-red-800"
+                    >
+                      Remove
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            )}
           </div>
 
           <div className="flex justify-end gap-2 pt-2">
