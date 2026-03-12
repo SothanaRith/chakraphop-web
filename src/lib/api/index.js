@@ -1,0 +1,11 @@
+// Export all API services
+export { authService } from './auth'
+export { productService } from './products'
+export { cartService } from './cart'
+export { orderService } from './orders'
+export { userService } from './users'
+export { inventoryService } from './inventory'
+export { courseService } from './courses'
+export { accessorySetService } from './accessorySets'
+export { wishlistService } from './wishlist'
+export { default as apiClient } from './client'

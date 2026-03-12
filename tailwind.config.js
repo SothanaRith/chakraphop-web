@@ -1,0 +1,102 @@
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: [
+    './src/pages/**/*.{js,jsx}',
+    './src/components/**/*.{js,jsx}',
+    './src/app/**/*.{js,jsx}',
+  ],
+  theme: {
+    extend: {
+      colors: {
+        primary: {
+          50: '#f5f7fa',
+          100: '#eaeef4',
+          200: '#d0dbe7',
+          300: '#a8bcd3',
+          400: '#7898ba',
+          500: '#567aa3',
+          600: '#436088',
+          700: '#374d6f',
+          800: '#30425d',
+          900: '#2c394f',
+          950: '#1d2535',
+        },
+        accent: {
+          50: '#fff5f5',
+          100: '#ffecec',
+          200: '#ffd6d6',
+          300: '#ffb3b3',
+          400: '#ff8f8f',
+          500: '#f25c5c',
+          600: '#e94b4b',
+          700: '#d93b3b',
+          800: '#b82f2f',
+          900: '#8f2323',
+          950: '#4a1212',
+        },
+        neutral: {
+          50: '#fafafa',
+          100: '#f5f5f5',
+          200: '#e5e5e5',
+          300: '#d4d4d4',
+          400: '#a3a3a3',
+          500: '#737373',
+          600: '#525252',
+          700: '#404040',
+          800: '#262626',
+          900: '#171717',
+          950: '#0a0a0a',
+        },
+      },
+      fontFamily: {
+        sans: ['var(--font-sans)', 'system-ui', 'sans-serif'],
+        display: ['var(--font-display)', 'system-ui', 'sans-serif'],
+      },
+      fontSize: {
+        'display-lg': ['4.5rem', { lineHeight: '1.1', letterSpacing: '-0.02em' }],
+        'display-md': ['3.75rem', { lineHeight: '1.1', letterSpacing: '-0.02em' }],
+        'display-sm': ['3rem', { lineHeight: '1.15', letterSpacing: '-0.01em' }],
+        'heading-xl': ['2.25rem', { lineHeight: '1.2', letterSpacing: '-0.01em' }],
+        'heading-lg': ['1.875rem', { lineHeight: '1.25', letterSpacing: '-0.01em' }],
+        'heading-md': ['1.5rem', { lineHeight: '1.3' }],
+        'heading-sm': ['1.25rem', { lineHeight: '1.4' }],
+        'body-lg': ['1.125rem', { lineHeight: '1.6' }],
+        'body': ['1rem', { lineHeight: '1.6' }],
+        'body-sm': ['0.875rem', { lineHeight: '1.5' }],
+        'caption': ['0.75rem', { lineHeight: '1.4' }],
+      },
+      spacing: {
+        '18': '4.5rem',
+        '22': '5.5rem',
+        '26': '6.5rem',
+        '30': '7.5rem',
+        '34': '8.5rem',
+        '38': '9.5rem',
+      },
+      maxWidth: {
+        '8xl': '88rem',
+        '9xl': '96rem',
+      },
+      animation: {
+        'fade-in': 'fadeIn 0.6s ease-out',
+        'fade-up': 'fadeUp 0.6s ease-out',
+        'scale-in': 'scaleIn 0.3s ease-out',
+      },
+      keyframes: {
+        fadeIn: {
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' },
+        },
+        fadeUp: {
+          '0%': { opacity: '0', transform: 'translateY(20px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
+        scaleIn: {
+          '0%': { opacity: '0', transform: 'scale(0.95)' },
+          '100%': { opacity: '1', transform: 'scale(1)' },
+        },
+      },
+    },
+  },
+  plugins: [],
+}

@@ -1,0 +1,5 @@
+export { default as Hero } from './Hero'
+export { default as FeaturedProducts } from './FeaturedProducts'
+export { default as CategoryShowcase } from './CategoryShowcase'
+export { default as StorySection } from './StorySection'
+export { default as Features } from './Features'
